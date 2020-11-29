@@ -1,10 +1,15 @@
-FROM ubuntu:21.04
+FROM ghcr.io/linuxserver/code-server
 
-RUN yes | apt-get update
-RUN yes | apt-get install curl
+ARG PUID
+ARG PGID
+ARG TZ
+ARG PASSWORD
+ARG SUDO_PASSWORD
 
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+ENV PUID 1000
+ENV PGID 1000
+ENV TZ Asia/Tokyo
+ENV PASSWORD ${PASSWORD}
+ENV SUDO_PASSWORD ${SUDO_PASSWORD}
 
-EXPOSE 8080
-
-CMD code-server
+EXPOSE 8443
