@@ -12,4 +12,10 @@ ENV TZ Asia/Tokyo
 ENV PASSWORD ${PASSWORD}
 ENV SUDO_PASSWORD ${SUDO_PASSWORD}
 
-EXPOSE 8443
+RUN apt-get update
+RUN apt-get install -y nginx
+ADD default.conf /etc/nginx/conf.d
+
+EXPOSE 80
+
+CMD nginx -g "daemon off;"

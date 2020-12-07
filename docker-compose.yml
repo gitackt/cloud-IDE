@@ -9,5 +9,5 @@ services:
       - PASSWORD=${PASSWORD}
       - SUDO_PASSWORD=${SUDO_PASSWORD}
     ports:
-      - 8080:8443
+      - 8080:80
     restart: unless-stopped
